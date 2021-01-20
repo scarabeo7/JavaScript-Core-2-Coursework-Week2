@@ -1,27 +1,23 @@
-const colours = ["Red", "Blue", "Green", "Yellow", "Pink", "Brown"];
+const colours = ["red", "blue", "green", "yellow", "pink", "brown"];
 
 function listOfColours(colours) {
-  let div = document.getElementById("content");
-  let select = document.createElement("select");
-  div.appendChild(select);
-  let p = document.createElement("p");
-  div.appendChild(p);
+    let div = document.getElementById("content");
+    let select = document.createElement("select");
+    div.appendChild(select);
+    let p = document.createElement("p");
+    p.innerHTMl;
+    div.appendChild(p);
 
-  colours.forEach(element => {
-    let option = document.createElement("option");
-    select.appendChild(option);
-    option.innerText = element;
-  });
-  
-  //TODO Each `<option>` should have a 'click' event listener to update the contents and colour of
-  // the `<p>` with the selected colour.
-  let option = document.querySelectorAll("option");
-  option.forEach((item) => {
-    console.log(item);
-    item.addEventListener("click", function () {
-  
+    colours.forEach(colour => {
+        let option = document.createElement("option");
+        option.innerText = colour;
+        select.appendChild(option);
     });
-  });
+
+    select.addEventListener("click", function() {
+        p.innerHTML = `Colour selected is: ${this.value}`;
+        p.style.color = this.value;
+    })
 };
 
 listOfColours(colours);
