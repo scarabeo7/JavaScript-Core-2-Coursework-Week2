@@ -5,7 +5,6 @@ function listOfColours(colours) {
     let select = document.createElement("select");
     div.appendChild(select);
     let p = document.createElement("p");
-    p.innerHTMl;
     div.appendChild(p);
 
     colours.forEach(colour => {
