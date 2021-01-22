@@ -19,11 +19,11 @@ function populateTodoList() {
         checkIcon.className = "fa fa-check";
         checkIcon.setAttribute("aria-hidden", true);
         checkIcon.addEventListener("click", () => {
-          if(liEl.style.textDecoration !== "line-through"){
-            liEl.style.textDecoration = "line-through";
-          }else{
-            liEl.style.textDecoration = "";
-          }
+            if (liEl.style.textDecoration !== "line-through") {
+                liEl.style.textDecoration = "line-through";
+            } else {
+                liEl.style.textDecoration = "";
+            }
         });
 
         let deleteIcon = document.createElement("i");
@@ -49,8 +49,12 @@ function addNewTodo(event) {
     event.preventDefault();
     let taskName = document.getElementById("todoInput");
     let newTodo = { task: taskName.value, completed: false };
-    todos.push(newTodo);
-    taskName.value = "";
+    if (taskName.value) {
+        todos.push(newTodo);
+        taskName.value = "";
+    } else {
+        alert(`Please enter todo`);
+    }
 
     populateTodoList();
 
@@ -58,5 +62,13 @@ function addNewTodo(event) {
 
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
-    // Write your code here...
+    let button = document.getElementById("deleteBtn")
+    let checkEl = document.querySelectorAll("list-group-item");
+    checkEl.forEach(item => {
+        button.addEventListener("click", () => {
+            if (item.style.textDecoration = "line-through") {
+                item.remove();
+            }
+        })
+    })
 }
