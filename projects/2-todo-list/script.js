@@ -19,7 +19,11 @@ function populateTodoList() {
         checkIcon.className = "fa fa-check";
         checkIcon.setAttribute("aria-hidden", true);
         checkIcon.addEventListener("click", () => {
+          if(liEl.style.textDecoration !== "line-through"){
             liEl.style.textDecoration = "line-through";
+          }else{
+            liEl.style.textDecoration = "";
+          }
         });
 
         let deleteIcon = document.createElement("i");
