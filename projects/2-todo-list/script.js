@@ -11,6 +11,7 @@ function populateTodoList() {
         let liEl = document.createElement("li");
         liEl.className = "list-group-item d-flex justify-content-between align-items-center";
         liEl.innerHTML = todo.task;
+        console.log(liEl);
 
         let spanEl = document.createElement("span");
         spanEl.className = "badge bg-primary rounded-pill";
@@ -61,14 +62,18 @@ function addNewTodo(event) {
 }
 
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
+// This bit of code is not working. Still trying to figure out how to delete completed todos
 function deleteAllCompletedTodos() {
-    let button = document.getElementById("deleteBtn")
-    let checkEl = document.querySelectorAll("list-group-item");
-    checkEl.forEach(item => {
+    let items = document.getElementsByClassName("list-group-item");
+    console.log(items);
+    items.forEach(element => {
+        let button = document.getElementById("deleteBtn")
         button.addEventListener("click", () => {
-            if (item.style.textDecoration = "line-through") {
-                item.remove();
+            alert(`hello`);
+            if (element.style.textDecoration === "line-through") {
+                delete element;
             }
         })
     })
+    populateTodoList();
 }
